@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import ControlledFlow from "./components/controlled-flow";
+import ControlledFlow from "./components/controlled_and_uncontrolled_components/controlled-flow";
 
 const StepOne = ({ goNext }) => (
   <>
