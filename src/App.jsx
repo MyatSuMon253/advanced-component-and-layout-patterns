@@ -1,5 +1,6 @@
+import React from "react";
 import "./App.css";
-import UncontrolledFlow from "./components/uncontrolled-flow";
+import ControlledFlow from "./components/controlled-flow";
 
 const StepOne = ({ goNext }) => (
   <>
@@ -17,22 +18,34 @@ const StepTwo = ({ goNext }) => (
 
 const StepThree = ({ goNext }) => (
   <>
+    <h1>Congradulations! You qualify for the gift!</h1>
+    <button onClick={() => goNext({ country: "myanmar" })}>Next</button>
+  </>
+);
+
+const StepFour = ({ goNext }) => (
+  <>
     <h1>Step #3 Enter your country</h1>
     <button onClick={() => goNext({ country: "myanmar" })}>Next</button>
   </>
 );
 
 function App() {
+  const [data, setData] = React.useState({});
+  const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
+
+  const onNext = (dataFromStep) => {
+    setData({ ...data, ...dataFromStep });
+    setCurrentStepIndex(currentStepIndex + 1);
+  };
+
   return (
-    <UncontrolledFlow
-      onFinish={(data) => {
-        console.log(data), alert("Yeahhh, you made it to the final step!");
-      }}
-    >
+    <ControlledFlow currentStepIndex={currentStepIndex} onNext={onNext}>
       <StepOne />
       <StepTwo />
-      <StepThree />
-    </UncontrolledFlow>
+      {/* {data?.age > 25 ? <StepThree /> : <></>} */}
+      <StepFour />
+    </ControlledFlow>
   );
 }
 
