@@ -3,28 +3,32 @@ import UncontrolledFlow from "./components/uncontrolled-flow";
 
 const StepOne = ({ goNext }) => (
   <>
-    <h1>Step #1</h1>
-    <button onClick={goNext}>Next</button>
+    <h1>Step #1 Enter your name:</h1>
+    <button onClick={() => goNext({ name: "My Name" })}>Next</button>
   </>
 );
 
 const StepTwo = ({ goNext }) => (
   <>
-    <h1>Step #2</h1>
-    <button onClick={goNext}>Next</button>
+    <h1>Step #2 Enter your age</h1>
+    <button onClick={() => goNext({ age: 23 })}>Next</button>
   </>
 );
 
 const StepThree = ({ goNext }) => (
   <>
-    <h1>Step #3</h1>
-    <button onClick={goNext}>Next</button>
+    <h1>Step #3 Enter your country</h1>
+    <button onClick={() => goNext({ country: "myanmar" })}>Next</button>
   </>
 );
 
 function App() {
   return (
-    <UncontrolledFlow>
+    <UncontrolledFlow
+      onFinish={(data) => {
+        console.log(data), alert("Yeahhh, you made it to the final step!");
+      }}
+    >
       <StepOne />
       <StepTwo />
       <StepThree />
