@@ -1,12 +1,9 @@
-import includeUser from "./components/higher_order_components/include-user";
-import UserInfo from "./components/higher_order_components/user-info";
-
-const UserInfoWithLoader = includeUser(UserInfo, 3);
+import { UserInfoForm } from "./components/higher_order_components/user-form";
 
 const App = () => {
   return (
     <div>
-      <UserInfoWithLoader />
+      <UserInfoForm />
     </div>
   );
 };
