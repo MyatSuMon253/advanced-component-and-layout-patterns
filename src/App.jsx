@@ -1,9 +1,10 @@
 import { UserInfoForm } from "./components/higher_order_components/user-form";
+import UserInfo from "./components/higher_order_components/user-info";
 
 const App = () => {
   return (
     <div>
-      <UserInfoForm />
+      <UserInfo userId={"1"} />
     </div>
   );
 };

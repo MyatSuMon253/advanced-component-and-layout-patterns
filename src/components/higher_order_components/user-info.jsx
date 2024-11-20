@@ -1,6 +1,8 @@
 import React from "react";
+import { useUser } from "../custom_hooks/user.hook";
 
-const UserInfo = ({user}) => {
+const UserInfo = ({ userId }) => {
+  const user = useUser(userId);
   const { name, age, country, books } = user || {};
 
   return user ? (
