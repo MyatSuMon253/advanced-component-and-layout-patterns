@@ -1,19 +1,23 @@
-import { SplitScreen } from "./components/layout_components/split-screen";
-
-const LeftSideComponent = ({ title }) => {
-  return <h2 style={{ backgroundColor: "crimson" }}>{title}</h2>;
-};
-
-const RightSideComponent = ({ title }) => {
-  return <h2 style={{ backgroundColor: "burlywood" }}>{title}</h2>;
-};
+import LargeAuthorListItem from "./components/layout_components/authors/LargeAuthorListItem";
+import SmallAuthorListItem from "./components/layout_components/authors/SmallAuthorListItem";
+import RegularList from "./components/layout_components/lists/RegularList";
+import { authors } from "./data/authors";
 
 const App = () => {
+  console.log(authors)
   return (
-    <SplitScreen leftWidth={1} rightWidth={3}>
-      <LeftSideComponent title="Left" />
-      <RightSideComponent title="Right" />
-    </SplitScreen>
+    <>
+      <RegularList
+        items={authors}
+        sourceName={"author"}
+        ItemComponent={SmallAuthorListItem}
+      />
+      <RegularList
+        items={authors}
+        sourceName={"author"}
+        ItemComponent={LargeAuthorListItem}
+      />
+    </>
   );
 };
 
