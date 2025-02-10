@@ -1,12 +1,15 @@
-import { UserInfoForm } from "./components/higher_order_components/user-form";
-import UserInfo from "./components/higher_order_components/user-info";
+import { SplitScreen } from "./components/layout_components/split-screen";
+
+const LeftSideComponent = () => {
+  return <h2 style={{backgroundColor: 'red'}}>I'm Left</h2>;
+};
+
+const RightSideComponent = () => {
+  return <h2 style={{backgroundColor: 'green'}}>I'm Right</h2>;
+};
 
 const App = () => {
-  return (
-    <div>
-      <UserInfo userId={"1"} />
-    </div>
-  );
+  return <SplitScreen Left={LeftSideComponent} Right={RightSideComponent} />;
 };
 
 export default App;
