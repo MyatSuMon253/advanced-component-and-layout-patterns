@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "commonjs",
+  "proxy": "http://localhost:9090",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
