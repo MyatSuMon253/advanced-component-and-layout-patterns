@@ -1,15 +1,12 @@
-import LargeBookListItem from "./components/layout_components/books/LargeBookListItem";
-import Modal from "./components/layout_components/Modal";
-import { authors } from "./data/authors";
-import { books } from "./data/books";
+import CurrentUserLoader from "./components/container_components/CurrentUserLoader";
+import UserInfo from "./components/container_components/UserInfo";
 
 const App = () => {
-  console.log(authors);
   return (
     <>
-      <Modal>
-        <LargeBookListItem book={books[1]} />
-      </Modal>
+      <CurrentUserLoader>
+        <UserInfo />
+      </CurrentUserLoader>
     </>
   );
 };

@@ -1,20 +1,20 @@
-import React from "react";
+const UserInfo = ({ user }) => {
+  const { name, age, country, books } = user || {};
 
-const UserInfo = ({user}) => {
-  const { name, age, country, books } = user;
-
-  return (
+  return user ? (
     <>
       <h2>{name}</h2>
-      <p>Age: {age}</p>
+      <p>Age: {age} years</p>
       <p>Country: {country}</p>
       <h2>Books</h2>
       <ul>
-        {books.map((book) => (
+        {books?.map((book) => (
           <li key={book}> {book} </li>
         ))}
       </ul>
     </>
+  ) : (
+    <h1>Loading...</h1>
   );
 };
 
