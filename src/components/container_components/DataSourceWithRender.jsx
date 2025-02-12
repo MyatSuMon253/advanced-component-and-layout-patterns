@@ -6,8 +6,7 @@ const DataSourceWithRender = ({ getData = () => {}, render }) => {
   useEffect(() => {
     (async () => {
       const response = await getData();
-      console.log(response);
-      setResource(response.data);
+      setResource(response);
     })();
   }, []);
 

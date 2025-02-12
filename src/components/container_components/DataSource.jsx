@@ -6,8 +6,7 @@ const DataSource = ({ getData = () => {}, resourceName, children }) => {
   useEffect(() => {
     (async () => {
       const response = await getData();
-      console.log(response);
-      setResource(response.data);
+      setResource(response);
     })();
   }, []);
 
