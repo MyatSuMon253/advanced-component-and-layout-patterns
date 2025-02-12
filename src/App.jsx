@@ -1,18 +1,12 @@
+import ResourceLoader from "./components/container_components/ResourceLoader";
 import UserInfo from "./components/container_components/UserInfo";
-import UserLoader from "./components/container_components/UserLoader";
 
 const App = () => {
   return (
     <>
-      <UserLoader userId={1}>
+      <ResourceLoader resourceUrl={`http://localhost:9090/users/2`} resourceName="user">
         <UserInfo />
-      </UserLoader>
-      <UserLoader userId={"2"}>
-        <UserInfo />
-      </UserLoader>
-      <UserLoader userId="3">
-        <UserInfo />
-      </UserLoader>
+      </ResourceLoader>
     </>
   );
 };
