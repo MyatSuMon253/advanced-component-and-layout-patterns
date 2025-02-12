@@ -1,5 +1,5 @@
 import axios from "axios";
-import DataSource from "./components/container_components/DataSource";
+import DataSourceWithRender from "./components/container_components/DataSourceWithRender";
 import UserInfo from "./components/container_components/UserInfo";
 
 const getDataFromServer = async (url) => {
@@ -8,15 +8,12 @@ const getDataFromServer = async (url) => {
 };
 
 const App = () => {
-  const getData = () => {};
   return (
     <>
-      <DataSource
+      <DataSourceWithRender
         getData={() => getDataFromServer(`/users/2`)}
-        resourceName="user"
-      >
-        <UserInfo />
-      </DataSource>
+        render={(resource) => <UserInfo user={resource} />}
+      ></DataSourceWithRender>
     </>
   );
 };
