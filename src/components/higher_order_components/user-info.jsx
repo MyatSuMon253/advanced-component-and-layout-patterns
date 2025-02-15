@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useCallback } from "react";
 import { useDataSource } from "../custom_hooks/data-source.hook";
 
 const fetchFromServer = (resourceUrl) => async () => {
@@ -12,10 +12,11 @@ const getDataFromLocalStorage = (key) => () => {
 };
 
 const UserInfo = ({ userId }) => {
-  // const user = useResource(`http://localhost:9090/users/${userId}`);
-  const user = useDataSource(
-    fetchFromServer(`http://localhost:9090/users/${userId}`)
+  const fetchUser = useCallback(
+    () => fetchFromServer(`http://localhost:9090/users/${userId}`),
+    [userId]
   );
+  const user = useDataSource(fetchUser);
   const message = useDataSource(getDataFromLocalStorage("msg"));
   const { name, age, country, books } = user || {};
 
