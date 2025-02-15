@@ -1,8 +1,8 @@
 import React from "react";
-import { useUser } from "../custom_hooks/user.hook";
+import { useResource } from "../custom_hooks/resource.hook";
 
 const UserInfo = ({ userId }) => {
-  const user = useUser(userId);
+  const user = useResource(`http://localhost:9090/users/${userId}`);
   const { name, age, country, books } = user || {};
 
   return user ? (
