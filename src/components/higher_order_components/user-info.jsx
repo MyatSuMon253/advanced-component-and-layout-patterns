@@ -7,11 +7,12 @@ const UserInfo = ({ userId }) => {
 
   return user ? (
     <div>
-      <h3>{name}</h3>
-      <p>{age}</p>
-      <p>{country}</p>
+      <h2>{name}</h2>
+      <p>Age: {age}</p>
+      <p>Country: {country}</p>
+      <h2>Books</h2>
       <ul>
-        {books.map((book) => (
+        {books?.map((book) => (
           <li key={book}>{book}</li>
         ))}
       </ul>

@@ -6,8 +6,9 @@ export const useUser = (userId) => {
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get(`/users/${userId}`);
-      setUser(response.data);
+      const response = await axios.get(`/http://localhost:9090/users/${userId}`);
+      setUser(response);
+      console.log(response)
     })();
   }, [userId]);
 
