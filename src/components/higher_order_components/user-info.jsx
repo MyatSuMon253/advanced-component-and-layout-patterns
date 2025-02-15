@@ -1,9 +1,25 @@
+import axios from "axios";
 import React from "react";
-import { useResource } from "../custom_hooks/resource.hook";
+import { useDataSource } from "../custom_hooks/data-source.hook";
+
+const fetchFromServer = (resourceUrl) => async () => {
+  const response = await axios.get(resourceUrl);
+  return response.data;
+};
+
+const getDataFromLocalStorage = (key) => () => {
+  return localStorage.getItem(key);
+};
 
 const UserInfo = ({ userId }) => {
-  const user = useResource(`http://localhost:9090/users/${userId}`);
+  // const user = useResource(`http://localhost:9090/users/${userId}`);
+  const user = useDataSource(
+    fetchFromServer(`http://localhost:9090/users/${userId}`)
+  );
+  const message = useDataSource(getDataFromLocalStorage("msg"));
   const { name, age, country, books } = user || {};
+
+  console.log("rendering user info component");
 
   return user ? (
     <div>
