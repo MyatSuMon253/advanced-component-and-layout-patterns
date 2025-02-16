@@ -1,6 +1,10 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
+
+const Context = createContext(null);
 
 const Header = ({ children }) => {
+  const { test } = useContext(Context);
+
   return (
     <div
       style={{
@@ -10,6 +14,7 @@ const Header = ({ children }) => {
       }}
     >
       {children}
+      {test}
     </div>
   );
 };
@@ -32,13 +37,11 @@ const Footer = ({ children }) => {
   );
 };
 
-const CompoundCard = ({ header, footer, children }) => {
+const CompoundCard = ({ children, test }) => {
   return (
-    <div style={{ border: "1px solid black" }}>
-      {header && <Header>{header}</Header>}
-      {children && <Body>{children}</Body>}
-      {footer && <Footer>{footer}</Footer>}
-    </div>
+    <Context.Provider value={{ test }}>
+      <div style={{ border: "1px solid black" }}>{children}</div>
+    </Context.Provider>
   );
 };
 

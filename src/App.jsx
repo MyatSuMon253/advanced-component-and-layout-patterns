@@ -2,7 +2,7 @@ import CompoundCard from "./components/compound_components/compound-card";
 
 const App = () => {
   return (
-    <CompoundCard>
+    <CompoundCard test={"new test value"}>
       <CompoundCard.Header>
         <h1>Header</h1>
       </CompoundCard.Header>
